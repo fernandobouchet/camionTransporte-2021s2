@@ -1,0 +1,34 @@
+import camion2.*
+import cosas2.*
+
+describe "Tests del camion" {
+	method initialize() {
+		camion.cargar(bumblebee)
+		camion.cargar(knightRider)
+		camion.cargar(paqueteDeLadrillos)
+		camion.cargar(arenaAGranel)
+		camion.cargar(bateriaAntiaerea)
+		contenedorPortuario.agregar(knightRider)
+		camion.cargar(contenedorPortuario)
+		camion.cargar(residuosRadioactivos)
+		camion.cargar(embalajeDeSeguridad)
+	}
+	test "Bumblebe pasa a robot al ser cargado y su nivel de peligrosidad aumenta a 30" {
+		assert.equals(bumblebee.nivelPeligrosidad(), 30)
+	}
+	test "Paquete de ladrillos agrega 12 ladrillos al ser cargado, por lo cual su peso pasa a 24kg" {
+		assert.equals(paqueteDeLadrillos.peso(), 24)
+	}
+	test "Arena a granel agrega 20 kg al ser cargado" {
+		assert.equals(arenaAGranel.peso(), 20)
+	}
+	test "bateria antiaerea carga los misiles al ser cargaado al camion y su peso pasa a 300 kg" {
+		assert.equals(bateriaAntiaerea.peso(), 300)
+	}
+	test "residuos radioactivos agrega 15 kg al ser cargado" {
+		assert.equals(residuosRadioactivos.peso(), 15)
+	}
+	test "totalBultos() / el total es de 12 bultos" {
+		assert.equals(camion.totalBultos(), 12)
+	}
+}

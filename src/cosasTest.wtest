@@ -1,0 +1,62 @@
+import camion.*
+import cosas.*
+
+describe "Tests de paquete de ladrillos" {
+	method initialize() {
+		paqueteDeLadrillos.setCantidad(500)
+	}
+	test "Peso" {
+		assert.equals(paqueteDeLadrillos.peso(), 1000)
+	}
+	test "Nivel de peligrosidad" {
+		assert.equals(paqueteDeLadrillos.nivelPeligrosidad(), 2)
+	}
+}
+
+describe "Tests de batería antiaérea con misiles" {
+	method initialize() {
+		bateriaAntiaerea.cargarMisiles()
+	}
+	test "Peso" {
+		assert.equals(bateriaAntiaerea.peso(), 300)
+	}
+	test "Nivel de peligrosidad" {
+		assert.equals(bateriaAntiaerea.nivelPeligrosidad(), 100)
+	}
+}
+
+describe "Tests de batería antiaérea sin misiles" {
+	test "Peso" {
+		assert.equals(bateriaAntiaerea.peso(), 200)
+	}
+	test "Nivel de peligrosidad" {
+		assert.equals(bateriaAntiaerea.nivelPeligrosidad(), 0)
+	}
+}
+
+describe "Tests de embalaje de seguridad cargado con 30 kg de residuos radioactivos" {
+	method initialize() {
+		residuosRadioactivos.setPeso(30)
+		embalajeDeSeguridad.envuelve(residuosRadioactivos)
+	}
+	test "Peso" {
+		assert.equals(embalajeDeSeguridad.peso(), 30)
+	}
+	test "Nivel de peligrosidad" {
+		assert.equals(embalajeDeSeguridad.nivelPeligrosidad(), 100)
+	}
+}
+
+describe "Tests de contenedor portuario" {
+	method initialize() {
+		contenedorPortuario.agregar(bumblebee)
+		contenedorPortuario.agregar(knightRider)
+		contenedorPortuario.agregar(arenaAGranel)
+	}
+	test "Peso" {
+		assert.equals(contenedorPortuario.peso(), 1400)
+	}
+	test "Nivel de peligrosidad" {
+		assert.equals(contenedorPortuario.nivelPeligrosidad(), 15)
+	}
+}

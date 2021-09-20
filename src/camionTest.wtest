@@ -1,0 +1,49 @@
+import camion.*
+import cosas.*
+
+describe "Tests del camion" {
+	method initialize() {
+		bumblebee.transformar()
+		camion.cargar(bumblebee)
+		arenaAGranel.setPeso(150)
+		camion.cargar(arenaAGranel)
+		bateriaAntiaerea.cargarMisiles()
+		camion.cargar(bateriaAntiaerea)
+		paqueteDeLadrillos.setCantidad(80)
+		embalajeDeSeguridad.envuelve(paqueteDeLadrillos)
+		camion.cargar(embalajeDeSeguridad)
+	}
+	test "todoPesoPar" {
+		assert.equals(camion.todoPesoPar(), true)
+	}
+	test "hayAlgunoQuePesa(peso) / El peso de bumblebe es 800" {
+		assert.equals(camion.hayAlgunoQuePesa(800), true)
+	}
+	test "elDeNivel(nivel) / Devuelve bateriaAntieaerea, de nivel 100" {
+		assert.equals(camion.elDeNivel(100), bateriaAntiaerea)
+	}
+	test "pesoTotal() / El peso total deberia retornar 1410" {
+		assert.equals(camion.pesoTotal(), 2410)
+	}
+	test "excedidoDePeso() / debe retornar falso al peso ser 1410 + 1000 de la tara del camion " {
+		assert.equals(camion.excedidoDePeso(), false)
+	}
+	test "objetosQueSuperanPeligrosidad(nivel) / debe devolver bumblebee y bateria antiaerea cuyo nivel es de + 10" {
+		assert.equals(camion.objetosQueSuperanPeligrosidad(10), [bumblebee, bateriaAntiaerea])
+	}
+	test "objetosMasPeligrososQue(cosa) / debe devolver bateria antiaerea que es mas peligroso que bumblebee" {
+		assert.equals(camion.objetosMasPeligrososQue(bumblebee), [bateriaAntiaerea])
+	}
+	test "puedeCircularEnRuta(nivelMaximoPeligrosidad) / debe retornar falso ya que a pesar de no estar excedido de peso el nivel maximo de seguridad esta fijado en 10" {
+		assert.equals(camion.puedeCircularEnRuta(10), false)
+	}
+	test "tieneAlgoQuePesaEntre(min, max) / devuelve true ya que arena a granel pesa 150" {
+		assert.equals(camion.tieneAlgoQuePesaEntre(140, 160), true)
+	}
+	test "cosaMasPesada()" {
+		assert.equals(camion.cosaMasPesada(), bumblebee)
+	}
+	test "pesos()" {
+		assert.equals(camion.pesos(), [800, 150, 300, 160])
+	}
+}
