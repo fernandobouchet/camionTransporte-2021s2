@@ -1,3 +1,8 @@
+Tests:
+
+[![build](https://github.com/fernandobouchet/camionTransporte-2021s2/actions/workflows/wollok.yml/badge.svg)](https://github.com/fernandobouchet/camionTransporte-2021s2/actions/workflows/wollok.yml)
+
+
 # Camión de transporte
 
 Una empresa de transporte quiere administrar mejor las cargas que lleva un camión.
